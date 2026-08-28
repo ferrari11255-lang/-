@@ -1,8 +1,9 @@
 {
+  "id": "./",
   "name": "IRODORI 日文學習",
   "short_name": "IRODORI 日文",
   "description": "IRODORI 日文單字、句子、發音與測驗練習",
-  "start_url": "./",
+  "start_url": "./?installed=1",
   "scope": "./",
   "display": "standalone",
   "background_color": "#fffaf6",
