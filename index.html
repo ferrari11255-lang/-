@@ -1,39 +1,76 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#fff8f1"><meta name="apple-mobile-web-app-capable" content="yes">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.svg">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#fff8f1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="IRODORI 日文">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.svg">
+<link rel="stylesheet" href="app.css?v=6">
 <title>IRODORI 日文學習</title>
-<style>
-:root{--bg:#fffaf6;--card:#fff;--ink:#403a37;--muted:#887e77;--line:#efe4dc;--peach:#fff0e9;--sky:#eef7ff;--yellow:#fff7d8;--mint:#edf9f4;--lav:#f5efff;--pink:#fff0f5;--accent:#ff9e87;--shadow:0 9px 26px rgba(145,104,79,.09)}*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}body{margin:0;background:radial-gradient(circle at top left,#fff0e9,transparent 32%),radial-gradient(circle at top right,#fff9dc,transparent 28%),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","Noto Sans JP","Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}.app{max-width:720px;margin:auto;padding:18px 16px 105px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:17px}.brand{display:flex;gap:11px;align-items:center}.logo{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#ffb6a6,#ffd867);font-size:26px;font-weight:900;box-shadow:var(--shadow)}h1{font-size:19px;margin:0}.sub{font-size:12px;color:var(--muted);margin-top:3px}.install{display:none;border:0;background:var(--accent);color:#fff;border-radius:13px;padding:10px 13px;font-weight:800}.screen{display:none}.screen.active{display:block}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff0e9,#fff8da 58%,#eef7ff);border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:var(--shadow)}.hero:after{content:"🏠";position:absolute;right:17px;top:15px;font-size:56px}.eyebrow{font-size:12px;color:#d57d69;font-weight:850;letter-spacing:.08em}.hero h2{font-size:26px;line-height:1.2;margin:7px 0 6px;max-width:70%}.hero p{margin:0;color:var(--muted);font-size:14px;max-width:75%}.progressrow{display:flex;gap:9px;align-items:center;margin-top:19px}.track{height:9px;flex:1;background:#fff;border:1px solid var(--line);border-radius:99px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,#ffb6a6,#ffd867);border-radius:99px}.ptext{font-size:12px;color:var(--muted);font-weight:750}.soundbox{margin-top:12px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px 13px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow)}.soundbox button{border:0;background:var(--sky);border-radius:13px;min-height:42px;padding:0 12px;font-weight:800}.soundtext{min-width:0}.soundtext strong{display:block;font-size:14px}.soundtext small{display:block;color:var(--muted);font-size:12px;margin-top:2px;line-height:1.4}.sectionTitle{display:flex;justify-content:space-between;align-items:end;margin:21px 2px 10px}.sectionTitle h3{font-size:17px;margin:0}.sectionTitle span{font-size:12px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mode{border:1px solid var(--line);border-radius:21px;min-height:118px;padding:15px;text-align:left;box-shadow:var(--shadow)}.mode:nth-child(1){background:var(--peach)}.mode:nth-child(2){background:var(--sky)}.mode:nth-child(3){background:var(--yellow)}.mode:nth-child(4){background:var(--mint)}.mi{width:40px;height:40px;border-radius:13px;background:#fff;display:grid;place-items:center;font-size:21px}.mode strong{display:block;margin:9px 0 4px;font-size:16px}.mode small{color:var(--muted);line-height:1.4}.daily{margin-top:12px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:18px;display:flex;gap:11px;align-items:center;box-shadow:var(--shadow)}.daily .dicon{width:48px;height:48px;border-radius:15px;background:var(--lav);display:grid;place-items:center;font-size:25px}.daily strong{display:block;font-size:14px}.daily small{color:var(--muted);font-size:12px}.back{border:0;background:transparent;padding:8px 0;font-weight:800;color:#9b685e;margin-bottom:7px}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:13px}.head h2{margin:2px 0 0;font-size:25px}.head small{color:var(--muted)}.search{width:100%;height:50px;border:1px solid var(--line);border-radius:16px;background:#fff;padding:0 15px;font-size:16px;outline:none}.chips{display:flex;gap:7px;overflow:auto;padding:10px 0 2px}.chip{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 12px;color:var(--muted)}.chip.active{background:#ffefe8;color:#c86f5b;border-color:#ffd1c5;font-weight:800}.cards{display:grid;gap:10px;margin-top:11px}.card{background:#fff;border:1px solid var(--line);border-radius:21px;padding:14px;box-shadow:var(--shadow)}.cardtop{display:grid;grid-template-columns:58px 1fr 48px;gap:11px;align-items:start}.visual{width:58px;height:58px;border-radius:17px;display:grid;place-items:center;font-size:29px}.house{background:var(--peach)}.appliance{background:var(--sky)}.furniture{background:var(--yellow)}.adj{background:var(--lav)}.homeType{background:var(--mint)}.sentence{background:var(--pink)}.jp{font-size:21px;font-weight:900;line-height:1.35}.kana{font-size:14px;color:var(--muted);margin-top:2px}.zh{font-size:16px;margin-top:4px}.tag{display:inline-block;background:#faf4f0;color:#8a6e64;border-radius:99px;padding:5px 8px;font-size:11px;margin-top:7px}.speak{width:48px;height:48px;border:0;border-radius:15px;background:#fff4ef;font-size:20px}.cardbottom{display:flex;align-items:center;gap:8px;margin-top:11px}.learn{min-height:39px;border:1px solid var(--line);background:#fff;border-radius:12px;padding:0 11px;color:var(--muted);font-weight:750}.learn.done{background:var(--mint);color:#24745a;border-color:#ccecdf}.note{margin-left:auto;color:var(--muted);font-size:12px;text-align:right;max-width:55%}.quiz{background:#fff;border:1px solid var(--line);border-radius:24px;padding:19px;box-shadow:var(--shadow)}.qart{width:76px;height:76px;border-radius:23px;background:var(--yellow);display:grid;place-items:center;font-size:39px;margin:3px auto 10px}.qmeta{text-align:center;font-size:12px;color:var(--muted)}.qjp{text-align:center;font-size:29px;font-weight:900;margin:13px 0 18px}.answers{display:grid;gap:8px}.answer{min-height:50px;border:1px solid var(--line);background:#fff;border-radius:15px;text-align:left;padding:10px 13px}.answer.correct{background:var(--mint);border-color:#bce6d4;color:#237259}.answer.wrong{background:#fff0f0;border-color:#edc5c5;color:#9b4545}.qactions{display:flex;gap:8px;margin-top:13px}.primary{flex:1;min-height:47px;border:0;border-radius:14px;background:var(--accent);color:#fff;font-weight:850}.secondary{min-height:47px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:0 14px;font-weight:750}.result{text-align:center;padding:15px 0}.result .big{font-size:43px;font-weight:900}.empty{text-align:center;color:var(--muted);padding:35px 0}.nav{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:min(calc(100% - 24px),696px);display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:rgba(255,255,255,.96);backdrop-filter:blur(15px);border:1px solid var(--line);border-radius:22px;padding:7px;box-shadow:0 12px 34px rgba(120,90,70,.13)}.nav button{border:0;background:transparent;min-height:52px;border-radius:15px;color:var(--muted);font-size:12px}.nav button.active{background:#fff0ea;color:#c66c59;font-weight:850}.nav b{display:block;font-size:18px;margin-bottom:2px}@media(max-width:370px){.grid{grid-template-columns:1fr}.hero h2{font-size:23px}.cardtop{grid-template-columns:54px 1fr 46px}.visual{width:54px;height:54px}}
-</style>
-</head><body><main class="app">
-<div class="top"><div class="brand"><div class="logo">あ</div><div><h1>IRODORI 日文</h1><div class="sub">每天一點點，日文就會留下來。</div></div></div><button id="installBtn" class="install">安裝 APP</button></div>
-<section id="home" class="screen active"><div class="hero"><div class="eyebrow">LESSON 07</div><h2>部屋が4つあります</h2><p>房子、家具、形容詞與「哪裡有什麼」的說法。</p><div class="progressrow"><div class="track"><div id="bar" class="bar"></div></div><div id="ptext" class="ptext"></div></div></div>
-<div class="soundbox"><button id="testSound">🔊 發音測試</button><div class="soundtext"><strong id="soundTitle">先測試手機日文發音</strong><small id="soundStatus">點一下「發音測試」，聽到「こんにちは」就代表正常。</small></div></div>
-<div class="sectionTitle"><h3>今天想怎麼學？</h3><span>挑一個就開始</span></div><div class="grid"><button class="mode" data-open="words"><span class="mi">🧸</span><strong>單字</strong><small>圖示＋假名＋中文</small></button><button class="mode" data-open="sentences"><span class="mi">💬</span><strong>句子</strong><small>完整句型＋發音</small></button><button class="mode" data-open="quiz"><span class="mi">🎯</span><strong>小測驗</strong><small>隨機 10 題複習</small></button><button class="mode" data-open="learned"><span class="mi">🌱</span><strong>已學會</strong><small>查看你的進度</small></button></div><div class="daily"><div class="dicon">🌸</div><div><strong>不用一次背完</strong><small>先學 5 個單字，再聽 3 句就很好。</small></div></div></section>
-<section id="study" class="screen"><button id="back" class="back">← 回首頁</button><div class="head"><div><small>LESSON 07</small><h2 id="studyTitle">單字</h2></div><small id="count"></small></div><input id="search" class="search" placeholder="搜尋日文、假名或中文…"><div id="chips" class="chips"></div><div id="cards" class="cards"></div><div id="empty" class="empty" style="display:none">找不到符合內容。</div></section>
-<section id="quizScreen" class="screen"><button id="quizBack" class="back">← 回首頁</button><div class="head"><div><small>LESSON 07</small><h2>小測驗</h2></div><small id="scoreText"></small></div><div id="quizBox" class="quiz"></div></section></main>
-<nav class="nav"><button data-nav="home" class="active"><b>⌂</b>首頁</button><button data-nav="words"><b>あ</b>單字</button><button data-nav="quiz"><b>✓</b>測驗</button></nav>
-<script>
-const W=[
-['家','いえ','家、房子','房子','🏠'],['部屋','へや','房間','房子','🚪'],['玄関','げんかん','玄關','房子','👟'],['お風呂','おふろ','浴室／洗澡','房子','🛁'],['トイレ','トイレ','廁所','房子','🚽'],['階段','かいだん','樓梯','房子','🪜'],['台所','だいどころ','廚房','房子','🍳'],['居間','いま','起居室','房子','🛋️'],['庭','にわ','庭院','房子','🌿'],['ベランダ','ベランダ','陽台','房子','🌤️'],['冷蔵庫','れいぞうこ','冰箱','家電','🧊'],['電子レンジ','でんしレンジ','微波爐','家電','🍱'],['炊飯器','すいはんき','電子鍋','家電','🍚'],['洗濯機','せんたくき','洗衣機','家電','🧺'],['エアコン','エアコン','冷氣','家電','❄️'],['ベッド','ベッド','床','家具','🛏️'],['テーブル','テーブル','桌子','家具','🪵'],['いす','いす','椅子','家具','🪑'],['広い','ひろい','寬敞','形容詞','↔️'],['せまい','せまい','狹窄、小','形容詞','🤏'],['大きい','おおきい','大','形容詞','🐘'],['小さい','ちいさい','小','形容詞','🐭'],['新しい','あたらしい','新的','形容詞','✨'],['古い','ふるい','舊的','形容詞','🕰️'],['静か','しずか','安靜','形容詞','🤫'],['うるさい','うるさい','吵','形容詞','📣'],['きれい','きれい','乾淨、漂亮','形容詞','🫧'],['きたない','きたない','髒','形容詞','🧹'],['アパート','アパート','公寓','住宅','🏘️'],['マンション','マンション','大樓型公寓','住宅','🏢'],['寮','りょう','宿舍','住宅','🛏️'],['一戸建て','いっこだて','獨棟住宅','住宅','🏡']].map(x=>({jp:x[0],kana:x[1],zh:x[2],group:x[3],emoji:x[4],type:'word'}));
-const S=[
-['ここは玄関です。','ここは げんかん です。','這裡是玄關。','介紹','ここは ～ です','🚪'],['ここに階段があります。','ここに かいだん が あります。','這裡有樓梯。','存在句','地方 に ＋ 東西 が あります','🪜'],['部屋が4つあります。','へやが よっつ あります。','有四個房間。','存在句','～があります','4️⃣'],['電子レンジはありますか？','でんしレンジは ありますか？','有微波爐嗎？','詢問','～はありますか？','🍱'],['はい、あります。','はい、あります。','有。','回答','肯定回答','⭕'],['ありません。','ありません。','沒有。','回答','否定回答','❌'],['どこに住んでいますか？','どこに すんでいますか？','你住在哪裡？','居住','～に住んでいます','📍'],['アパートに住んでいます。','アパートに すんでいます。','我住在公寓。','居住','～に住んでいます','🏘️'],['家はどうですか？','いえは どうですか？','你的房子怎麼樣？','描述','詢問狀態','🏠'],['ちょっと古いです。でも、とても広いです。','ちょっと ふるいです。でも、とても ひろいです。','有點舊，但是非常寬敞。','描述','形容詞＋でも','✨'],['家は広くないです。','いえは ひろくないです。','房子不寬敞。','形容詞','い形容詞：い → くないです','↔️'],['この部屋は静かじゃないです。','この へやは しずかじゃないです。','這個房間不安靜。','形容詞','な形容詞：じゃないです','📣'],['部屋はきれいです。','へやは きれいです。','房間很乾淨。','形容詞','きれい是な形容詞','🫧']].map(x=>({jp:x[0],kana:x[1],zh:x[2],group:x[3],note:x[4],emoji:x[5],type:'sentence'}));
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let mode='words',group='全部',deferred=null;const learned=new Set(JSON.parse(localStorage.getItem('irodoriLearnedV3')||'[]'));
-function id(x){return x.type+'|'+x.jp}function save(){localStorage.setItem('irodoriLearnedV3',JSON.stringify([...learned]));progress()}function progress(){let total=W.length+S.length,n=learned.size;$('#bar').style.width=Math.round(n/total*100)+'%';$('#ptext').textContent=n+' / '+total}
-function japVoice(){let vs=speechSynthesis.getVoices();return vs.find(v=>v.lang==='ja-JP')||vs.find(v=>/^ja/i.test(v.lang))||null}
-function speak(text){if(!('speechSynthesis'in window)){setSound(false,'這個瀏覽器不支援文字轉語音。');return}try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text.replace(/\s+/g,' '));u.lang='ja-JP';u.rate=.78;u.pitch=1;u.volume=1;let v=japVoice();if(v)u.voice=v;u.onstart=()=>setSound(true,'日文發音正常 ✓');u.onerror=e=>setSound(false,'沒有播放成功。請確認媒體音量，並在手機「文字轉語音」安裝日文語音。');speechSynthesis.resume();setTimeout(()=>speechSynthesis.speak(u),30)}catch(e){setSound(false,'發音啟動失敗，請用 Chrome 或 Samsung Internet 再試。')}}
-function setSound(ok,msg){let el=$('#soundStatus');if(el)el.textContent=msg;let t=$('#soundTitle');if(t)t.textContent=ok?'發音可以用了！':'日文發音設定'}
-$('#testSound').onclick=()=>speak('こんにちは。にほんごの はつおん テストです。');if('speechSynthesis'in window){speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{let v=japVoice();if(v)$('#soundStatus').textContent='已偵測到日文語音：'+v.name}}
-function show(id){$$('.screen').forEach(x=>x.classList.remove('active'));$(id).classList.add('active');scrollTo(0,0)}function nav(n){$$('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.nav===n))}
-function openStudy(m){mode=m;group='全部';$('#search').value='';$('#studyTitle').textContent=m==='words'?'單字':m==='sentences'?'句子':'已學會';chips();cards();show('#study');nav(m==='words'?'words':'home')}
-function source(){let a=mode==='words'?W:mode==='sentences'?S:[...W,...S].filter(x=>learned.has(id(x)));let q=$('#search').value.trim().toLowerCase();if(group!=='全部')a=a.filter(x=>x.group===group);if(q)a=a.filter(x=>[x.jp,x.kana,x.zh,x.group,x.note].filter(Boolean).some(v=>String(v).toLowerCase().includes(q)));return a}
-function chips(){let a=mode==='words'?W:mode==='sentences'?S:[...W,...S],gs=['全部',...new Set(a.map(x=>x.group))];$('#chips').innerHTML='';gs.forEach(g=>{let b=document.createElement('button');b.className='chip'+(g===group?' active':'');b.textContent=g;b.onclick=()=>{group=g;chips();cards()};$('#chips').append(b)})}
-function cls(x){if(x.type==='sentence')return'sentence';if(x.group==='房子')return'house';if(x.group==='家電')return'appliance';if(x.group==='家具')return'furniture';if(x.group==='形容詞')return'adj';return'homeType'}
-function cards(){let a=source(),box=$('#cards');box.innerHTML='';$('#count').textContent=a.length+' 筆';$('#empty').style.display=a.length?'none':'block';a.forEach(x=>{let c=document.createElement('article');c.className='card';let top=document.createElement('div');top.className='cardtop';let v=document.createElement('div');v.className='visual '+cls(x);v.textContent=x.emoji;let text=document.createElement('div');text.innerHTML='<div class="jp"></div><div class="kana"></div><div class="zh"></div><span class="tag"></span>';text.querySelector('.jp').textContent=x.jp;text.querySelector('.kana').textContent=x.kana;text.querySelector('.zh').textContent=x.zh;text.querySelector('.tag').textContent=x.group;let sp=document.createElement('button');sp.className='speak';sp.textContent='🔊';sp.onclick=()=>speak(x.kana);top.append(v,text,sp);let bot=document.createElement('div');bot.className='cardbottom';let lb=document.createElement('button');lb.className='learn'+(learned.has(id(x))?' done':'');lb.textContent=learned.has(id(x))?'✓ 已學會':'標記學會';lb.onclick=()=>{learned.has(id(x))?learned.delete(id(x)):learned.add(id(x));save();cards()};bot.append(lb);if(x.note){let n=document.createElement('div');n.className='note';n.textContent=x.note;bot.append(n)}c.append(top,bot);box.append(c)})}
-let quiz=[],qi=0,score=0,answered=false;const shuffle=a=>[...a].sort(()=>Math.random()-.5);function startQuiz(){quiz=shuffle(W).slice(0,10);qi=0;score=0;answered=false;renderQuiz();show('#quizScreen');nav('quiz')}function renderQuiz(){let box=$('#quizBox');box.innerHTML='';$('#scoreText').textContent=score+' / '+quiz.length;if(qi>=quiz.length){let d=document.createElement('div');d.className='result';d.innerHTML='<div style="font-size:48px">🎉</div><div class="big">'+score+' / '+quiz.length+'</div><p>'+(score>=8?'很棒，這課已經熟很多了！':'再玩一次，你會記得更牢。')+'</p>';let b=document.createElement('button');b.className='primary';b.textContent='再測一次';b.onclick=startQuiz;d.append(b);box.append(d);return}let q=quiz[qi],art=document.createElement('div');art.className='qart';art.textContent=q.emoji;let meta=document.createElement('div');meta.className='qmeta';meta.textContent='第 '+(qi+1)+' 題 · 選出中文意思';let jp=document.createElement('div');jp.className='qjp';jp.textContent=q.jp;let ans=document.createElement('div');ans.className='answers';let next=document.createElement('button');next.className='primary';next.style.display='none';next.textContent=qi===quiz.length-1?'看結果':'下一題';next.onclick=()=>{qi++;answered=false;renderQuiz()};shuffle([q,...shuffle(W.filter(x=>x.jp!==q.jp)).slice(0,3)]).forEach(o=>{let b=document.createElement('button');b.className='answer';b.textContent=o.zh;b.onclick=()=>{if(answered)return;answered=true;$$('.answer').forEach(z=>{if(z.textContent===q.zh)z.classList.add('correct')});if(o.zh===q.zh)score++;else b.classList.add('wrong');$('#scoreText').textContent=score+' / '+quiz.length;next.style.display='block'};ans.append(b)});let actions=document.createElement('div');actions.className='qactions';let au=document.createElement('button');au.className='secondary';au.textContent='🔊 發音';au.onclick=()=>speak(q.kana);actions.append(au,next);box.append(art,meta,jp,ans,actions)}
-$$('[data-open]').forEach(b=>b.onclick=()=>b.dataset.open==='quiz'?startQuiz():openStudy(b.dataset.open));$('#back').onclick=()=>{show('#home');nav('home')};$('#quizBack').onclick=()=>{show('#home');nav('home')};$('#search').oninput=cards;$$('.nav button').forEach(b=>b.onclick=()=>b.dataset.nav==='home'?(show('#home'),nav('home')):b.dataset.nav==='words'?openStudy('words'):startQuiz());
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#installBtn').style.display='block'});$('#installBtn').onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$('#installBtn').style.display='none'};if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});progress();
-</script></body></html>
+</head>
+<body>
+<main class="app">
+  <div class="top">
+    <div class="brand"><div class="logo">あ</div><div><h1>IRODORI 日文</h1><div class="sub">每天一點點，日文就會留下來。</div></div></div>
+    <button id="installBtn" class="install" type="button">📲 加到桌面</button>
+  </div>
+
+  <section id="home" class="screen active">
+    <div class="hero">
+      <div class="eyebrow">LESSON 07</div>
+      <h2>部屋が4つあります</h2>
+      <p>房子、家具、形容詞與「哪裡有什麼」的說法。</p>
+      <div class="progress"><div class="track"><div id="bar" class="bar"></div></div><div id="ptext" class="count"></div></div>
+    </div>
+
+    <div class="soundbox">
+      <button id="testSound" class="soundbtn" type="button">🔊 發音測試</button>
+      <div class="soundtext"><strong>先測試聲音</strong><small id="soundStatus">按一下，應該會聽到「こんにちは」。</small></div>
+    </div>
+
+    <div id="installHelp" class="installbox">
+      <strong>把 APP 放到手機桌面：</strong><br>
+      Chrome：右上角 ⋮ →「新增至主畫面」或「安裝應用程式」。<br>
+      Samsung Internet：右下角 ☰ →「新增頁面至」→「主螢幕」。<br>
+      <span id="installStatus">如果瀏覽器支援直接安裝，按上方「📲 加到桌面」會跳出安裝視窗。</span>
+    </div>
+
+    <div class="sectionTitle"><h3>今天想怎麼學？</h3><span>挑一個就開始</span></div>
+    <div class="grid">
+      <button class="mode" data-open="words" type="button"><span class="mi">🧸</span><strong>單字</strong><small>圖示＋假名＋中文</small></button>
+      <button class="mode" data-open="sentences" type="button"><span class="mi">💬</span><strong>句子</strong><small>完整句型＋發音</small></button>
+      <button class="mode" data-open="quiz" type="button"><span class="mi">🎯</span><strong>小測驗</strong><small>隨機 10 題複習</small></button>
+      <button class="mode" data-open="learned" type="button"><span class="mi">🌱</span><strong>已學會</strong><small>查看你的進度</small></button>
+    </div>
+    <div class="daily"><div class="dicon">🌸</div><div><strong>不用一次背完</strong><small>先學 5 個單字，再聽 3 句就很好。</small></div></div>
+  </section>
+
+  <section id="study" class="screen">
+    <button id="back" class="back" type="button">← 回首頁</button>
+    <div class="head"><div><small>LESSON 07</small><h2 id="studyTitle">單字</h2></div><small id="studyCount"></small></div>
+    <input id="search" class="search" type="search" placeholder="搜尋日文、假名或中文…">
+    <div id="chips" class="chips"></div>
+    <div id="cards" class="cards"></div>
+    <div id="empty" class="empty" style="display:none">找不到符合內容。</div>
+  </section>
+
+  <section id="quizScreen" class="screen">
+    <button id="quizBack" class="back" type="button">← 回首頁</button>
+    <div class="head"><div><small>LESSON 07</small><h2>小測驗</h2></div><small id="scoreText"></small></div>
+    <div id="quizBox" class="quiz"></div>
+  </section>
+</main>
+
+<nav class="nav">
+  <button type="button" data-nav="home" class="active"><b>⌂</b>首頁</button>
+  <button type="button" data-nav="words"><b>あ</b>單字</button>
+  <button type="button" data-nav="quiz"><b>✓</b>測驗</button>
+</nav>
+<script src="data.js?v=6"></script>
+<script src="app.js?v=6"></script>
+</body>
+</html>
