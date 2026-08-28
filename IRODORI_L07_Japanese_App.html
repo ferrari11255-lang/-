@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IRODORI 第7課｜日文單字・句子發音練習</title>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --text:#1f2937; --muted:#6b7280;
+      --border:#e5e7eb; --accent:#4f46e5; --accent-soft:#eef2ff;
+      --success:#0f766e; --shadow:0 8px 24px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","Noto Sans JP",sans-serif;
+    }
+    .wrap{max-width:900px;margin:0 auto;padding:24px 16px 48px}
+    .hero{margin-bottom:18px}
+    .hero h1{font-size:28px;margin:0 0 6px}
+    .hero p{margin:0;color:var(--muted)}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}
+    button,input{
+      font:inherit
+    }
+    button{
+      min-height:44px;border:1px solid var(--border);background:#fff;border-radius:12px;
+      padding:10px 14px;cursor:pointer
+    }
+    button.active{background:var(--accent-soft);border-color:#c7d2fe;color:#3730a3;font-weight:700}
+    button:hover{filter:brightness(.985)}
+    input{
+      width:100%;min-height:46px;border:1px solid var(--border);border-radius:12px;padding:10px 14px;
+      background:#fff;font-size:16px
+    }
+    .searchrow{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:14px}
+    .status{
+      background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;color:var(--muted);
+      margin-bottom:14px
+    }
+    .list{display:grid;gap:12px}
+    .card{
+      background:var(--card);border:1px solid var(--border);border-radius:18px;padding:16px;
+      box-shadow:var(--shadow)
+    }
+    .top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+    .jp{font-size:24px;font-weight:750;line-height:1.35}
+    .kana{color:var(--muted);margin-top:4px}
+    .zh{font-size:17px;margin-top:4px}
+    .note{font-size:14px;color:var(--muted);margin-top:8px}
+    .tag{
+      display:inline-block;font-size:12px;color:var(--muted);border:1px solid var(--border);
+      border-radius:999px;padding:3px 8px;margin-left:7px;vertical-align:middle
+    }
+    .speak{font-size:20px;min-width:50px}
+    .actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .learned{background:var(--accent-soft);color:#3730a3}
+    .empty{text-align:center;color:var(--muted);padding:40px 0;display:none}
+    .foot{margin-top:24px;color:var(--muted);font-size:13px;text-align:center}
+    @media(max-width:560px){
+      .hero h1{font-size:23px}
+      .jp{font-size:21px}
+      .searchrow{grid-template-columns:1fr}
+      .speak{min-width:46px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <h1>IRODORI 第7課｜日文學習</h1>
+      <p>單字・句子・發音練習｜點 🔊 就能聽日文</p>
+    </section>
+
+    <div class="toolbar" role="tablist">
+      <button class="tab active" data-tab="words">單字</button>
+      <button class="tab" data-tab="sentences">句子</button>
+      <button class="tab" data-tab="learned">已學會</button>
+    </div>
+
+    <div class="searchrow">
+      <input id="search" type="search" placeholder="搜尋：冰箱、ひろい、住んでいます…" />
+      <button id="stop">停止發音</button>
+    </div>
+
+    <div class="status">
+      <span>按 🔊 聽發音；按「標記學會」記錄進度。</span>
+      <span id="voiceStatus">正在檢查日文語音…</span>
+    </div>
+
+    <section id="list" class="list"></section>
+    <div id="empty" class="empty">沒有符合的內容。</div>
+
+    <div class="foot">發音使用瀏覽器 Web Speech API；Chrome／Edge 通常支援最好。</div>
+  </main>
+
+<script>
+const words = [
+  {jp:'家',kana:'いえ',zh:'家、房子',group:'房子'},
+  {jp:'部屋',kana:'へや',zh:'房間',group:'房子'},
+  {jp:'玄関',kana:'げんかん',zh:'玄關',group:'房子'},
+  {jp:'お風呂',kana:'おふろ',zh:'浴室／洗澡',group:'房子'},
+  {jp:'トイレ',kana:'トイレ',zh:'廁所',group:'房子'},
+  {jp:'階段',kana:'かいだん',zh:'樓梯',group:'房子'},
+  {jp:'台所',kana:'だいどころ',zh:'廚房',group:'房子'},
+  {jp:'居間',kana:'いま',zh:'起居室',group:'房子'},
+  {jp:'庭',kana:'にわ',zh:'庭院',group:'房子'},
+  {jp:'ベランダ',kana:'ベランダ',zh:'陽台',group:'房子'},
+  {jp:'冷蔵庫',kana:'れいぞうこ',zh:'冰箱',group:'家電'},
+  {jp:'電子レンジ',kana:'でんしレンジ',zh:'微波爐',group:'家電'},
+  {jp:'炊飯器',kana:'すいはんき',zh:'電子鍋',group:'家電'},
+  {jp:'洗濯機',kana:'せんたくき',zh:'洗衣機',group:'家電'},
+  {jp:'エアコン',kana:'エアコン',zh:'冷氣',group:'家電'},
+  {jp:'ベッド',kana:'ベッド',zh:'床',group:'家具'},
+  {jp:'テーブル',kana:'テーブル',zh:'桌子',group:'家具'},
+  {jp:'いす',kana:'いす',zh:'椅子',group:'家具'},
+  {jp:'広い',kana:'ひろい',zh:'寬敞',group:'形容詞'},
+  {jp:'せまい',kana:'せまい',zh:'狹窄、小',group:'形容詞'},
+  {jp:'大きい',kana:'おおきい',zh:'大',group:'形容詞'},
+  {jp:'小さい',kana:'ちいさい',zh:'小',group:'形容詞'},
+  {jp:'新しい',kana:'あたらしい',zh:'新的',group:'形容詞'},
+  {jp:'古い',kana:'ふるい',zh:'舊的',group:'形容詞'},
+  {jp:'静か',kana:'しずか',zh:'安靜',group:'形容詞'},
+  {jp:'うるさい',kana:'うるさい',zh:'吵',group:'形容詞'},
+  {jp:'きれい',kana:'きれい',zh:'乾淨、漂亮',group:'形容詞'},
+  {jp:'きたない',kana:'きたない',zh:'髒',group:'形容詞'},
+  {jp:'アパート',kana:'アパート',zh:'公寓',group:'住宅'},
+  {jp:'マンション',kana:'マンション',zh:'大樓型公寓',group:'住宅'},
+  {jp:'寮',kana:'りょう',zh:'宿舍',group:'住宅'},
+  {jp:'一戸建て',kana:'いっこだて',zh:'獨棟住宅',group:'住宅'}
+];
+
+const sentences = [
+  {jp:'ここは玄関です。',kana:'ここは げんかん です。',zh:'這裡是玄關。',note:'ここは ～ です'},
+  {jp:'ここに階段があります。',kana:'ここに かいだん が あります。',zh:'這裡有樓梯。',note:'地方 に ＋ 東西 が あります'},
+  {jp:'部屋が4つあります。',kana:'へやが よっつ あります。',zh:'有四個房間。',note:'～があります'},
+  {jp:'電子レンジはありますか？',kana:'でんしレンジは ありますか？',zh:'有微波爐嗎？',note:'～はありますか？'},
+  {jp:'はい、あります。',kana:'はい、あります。',zh:'有。',note:'肯定回答'},
+  {jp:'ありません。',kana:'ありません。',zh:'沒有。',note:'否定回答'},
+  {jp:'どこに住んでいますか？',kana:'どこに すんでいますか？',zh:'你住在哪裡？',note:'～に住んでいます'},
+  {jp:'アパートに住んでいます。',kana:'アパートに すんでいます。',zh:'我住在公寓。',note:'～に住んでいます'},
+  {jp:'家はどうですか？',kana:'いえは どうですか？',zh:'你的房子怎麼樣？',note:'詢問狀態'},
+  {jp:'ちょっと古いです。でも、とても広いです。',kana:'ちょっと ふるいです。でも、とても ひろいです。',zh:'有點舊，但是非常寬敞。',note:'形容詞＋でも'},
+  {jp:'家は広くないです。',kana:'いえは ひろくないです。',zh:'房子不寬敞。',note:'い形容詞：い → くないです'},
+  {jp:'この部屋は静かじゃないです。',kana:'この へやは しずかじゃないです。',zh:'這個房間不安靜。',note:'な形容詞：じゃないです'},
+  {jp:'部屋はきれいです。',kana:'へやは きれいです。',zh:'房間很乾淨。',note:'きれい是な形容詞'}
+];
+
+let currentTab = 'words';
+const learned = new Set(JSON.parse(localStorage.getItem('irodori_l7_learned') || '[]'));
+
+const list = document.getElementById('list');
+const search = document.getElementById('search');
+const empty = document.getElementById('empty');
+const voiceStatus = document.getElementById('voiceStatus');
+
+function saveLearned(){
+  localStorage.setItem('irodori_l7_learned', JSON.stringify([...learned]));
+}
+function keyFor(type,item){ return type + ':' + item.jp; }
+
+function speak(text){
+  if(!('speechSynthesis' in window)){
+    voiceStatus.textContent = '此瀏覽器不支援語音朗讀';
+    return;
+  }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP';
+  u.rate = 0.78;
+  const voices = speechSynthesis.getVoices();
+  const ja = voices.find(v => /^ja/i.test(v.lang));
+  if(ja) u.voice = ja;
+  speechSynthesis.speak(u);
+}
+
+function getItems(){
+  const q = search.value.trim().toLowerCase();
+  let src;
+  if(currentTab === 'learned'){
+    src = [
+      ...words.map(x=>({...x,type:'word'})),
+      ...sentences.map(x=>({...x,type:'sentence'}))
+    ].filter(x=>learned.has(keyFor(x.type,x)));
+  }else{
+    src = currentTab === 'words'
+      ? words.map(x=>({...x,type:'word'}))
+      : sentences.map(x=>({...x,type:'sentence'}));
+  }
+  if(!q) return src;
+  return src.filter(x => [x.jp,x.kana,x.zh,x.group,x.note]
+    .filter(Boolean)
+    .some(v => String(v).toLowerCase().includes(q)));
+}
+
+function render(){
+  const items = getItems();
+  list.innerHTML = '';
+  empty.style.display = items.length ? 'none' : 'block';
+
+  items.forEach(item=>{
+    const card = document.createElement('article');
+    card.className = 'card';
+
+    const top = document.createElement('div');
+    top.className = 'top';
+
+    const text = document.createElement('div');
+    text.style.minWidth='0';
+
+    const title = document.createElement('div');
+    title.className='jp';
+    title.textContent=item.jp;
+
+    if(item.group){
+      const tag=document.createElement('span');
+      tag.className='tag';
+      tag.textContent=item.group;
+      title.appendChild(tag);
+    }
+
+    const kana=document.createElement('div');
+    kana.className='kana';
+    kana.textContent=item.kana;
+
+    const zh=document.createElement('div');
+    zh.className='zh';
+    zh.textContent=item.zh;
+
+    text.append(title,kana,zh);
+
+    if(item.note){
+      const note=document.createElement('div');
+      note.className='note';
+      note.textContent='句型：'+item.note;
+      text.appendChild(note);
+    }
+
+    const speakBtn=document.createElement('button');
+    speakBtn.className='speak';
+    speakBtn.type='button';
+    speakBtn.textContent='🔊';
+    speakBtn.setAttribute('aria-label','播放日文發音');
+    speakBtn.addEventListener('click',()=>speak(item.jp));
+
+    top.append(text,speakBtn);
+
+    const actions=document.createElement('div');
+    actions.className='actions';
+
+    const k=keyFor(item.type,item);
+    const learnBtn=document.createElement('button');
+    learnBtn.type='button';
+    const isLearned=learned.has(k);
+    learnBtn.textContent=isLearned?'✓ 已學會':'標記學會';
+    if(isLearned) learnBtn.classList.add('learned');
+    learnBtn.addEventListener('click',()=>{
+      if(learned.has(k)) learned.delete(k); else learned.add(k);
+      saveLearned();
+      render();
+    });
+
+    actions.appendChild(learnBtn);
+    card.append(top,actions);
+    list.appendChild(card);
+  });
+}
+
+document.querySelectorAll('.tab').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    currentTab=btn.dataset.tab;
+    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+});
+
+search.addEventListener('input',render);
+document.getElementById('stop').addEventListener('click',()=>{
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+});
+
+function updateVoice(){
+  if(!('speechSynthesis' in window)){
+    voiceStatus.textContent='此瀏覽器不支援語音朗讀';
+    return;
+  }
+  const voices=speechSynthesis.getVoices();
+  const ja=voices.some(v=>/^ja/i.test(v.lang));
+  voiceStatus.textContent=ja?'✓ 已找到日文語音':'可播放；發音效果依裝置語音而定';
+}
+updateVoice();
+if('speechSynthesis' in window) speechSynthesis.onvoiceschanged=updateVoice;
+
+render();
+</script>
+</body>
+</html>
