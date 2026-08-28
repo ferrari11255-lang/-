@@ -1,0 +1,15 @@
+{
+  "name": "IRODORI 日文學習",
+  "short_name": "IRODORI 日文",
+  "description": "IRODORI 日文單字、句子、發音與測驗練習",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fffaf6",
+  "theme_color": "#fff8f1",
+  "lang": "zh-Hant",
+  "icons": [
+    {"src":"icon-192.svg","sizes":"192x192","type":"image/svg+xml","purpose":"any maskable"},
+    {"src":"icon-512.svg","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
