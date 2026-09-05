@@ -10,6 +10,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.svg">
 <link rel="stylesheet" href="app.css?v=6">
+<link rel="stylesheet" href="overrides-v8.css?v=8">
 <title>IRODORI 日文學習</title>
 </head>
 <body>
@@ -29,7 +30,7 @@
 
     <div class="soundbox">
       <button id="testSound" class="soundbtn" type="button">🔊 發音測試</button>
-      <div class="soundtext"><strong>先測試聲音</strong><small id="soundStatus">按一下，應該會聽到「こんにちは」。</small></div>
+      <div class="soundtext"><strong>圖示也能播放發音</strong><small id="soundStatus">點單字左邊的大圖示，或右邊 🔊，都會念日文。</small></div>
     </div>
 
     <div id="installHelp" class="installbox">
@@ -41,12 +42,12 @@
 
     <div class="sectionTitle"><h3>今天想怎麼學？</h3><span>挑一個就開始</span></div>
     <div class="grid">
-      <button class="mode" data-open="words" type="button"><span class="mi">🧸</span><strong>單字</strong><small>88 個完整單字＋假名＋中文＋發音</small></button>
+      <button class="mode" data-open="words" type="button"><span class="mi">🧸</span><strong>單字</strong><small>88 個完整單字＋對應圖示＋發音</small></button>
       <button class="mode" data-open="sentences" type="button"><span class="mi">💬</span><strong>句子</strong><small>完整句型＋發音</small></button>
       <button class="mode" data-open="quiz" type="button"><span class="mi">🎯</span><strong>小測驗</strong><small>隨機 10 題複習</small></button>
       <button class="mode" data-open="learned" type="button"><span class="mi">🌱</span><strong>已學會</strong><small>查看你的進度</small></button>
     </div>
-    <div class="daily"><div class="dicon">🌸</div><div><strong>不用一次背完</strong><small>可以用上方分類，一組一組慢慢學。</small></div></div>
+    <div class="daily"><div class="dicon">🌸</div><div><strong>現在可以看圖＋聽聲音一起記</strong><small>直接點單字圖示就能播放發音。</small></div></div>
   </section>
 
   <section id="study" class="screen">
@@ -70,7 +71,7 @@
   <button type="button" data-nav="words"><b>あ</b>單字</button>
   <button type="button" data-nav="quiz"><b>✓</b>測驗</button>
 </nav>
-<script src="data.js?v=7"></script>
-<script src="app.js?v=6"></script>
+<script src="data.js?v=8"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>
