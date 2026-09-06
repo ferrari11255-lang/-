@@ -10,13 +10,13 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.svg">
 <link rel="stylesheet" href="app.css?v=6">
-<link rel="stylesheet" href="overrides-v8.css?v=9">
+<link rel="stylesheet" href="overrides-v10.css?v=10">
 <title>IRODORI 日文學習</title>
 </head>
 <body>
 <main class="app">
   <div class="top">
-    <div class="brand"><div class="logo">あ</div><div><h1>IRODORI 日文</h1><div class="sub">每天一點點，日文就會留下來。</div></div></div>
+    <div class="brand"><div class="logo">あ</div><div><h1>IRODORI 日文</h1><div class="sub">第1～7課｜每天一點點，日文就會留下來。</div></div></div>
     <button id="installBtn" class="install" type="button">📲 加到桌面</button>
   </div>
 
@@ -24,7 +24,7 @@
     <div class="hero">
       <div class="eyebrow">LESSON 07</div>
       <h2>部屋が4つあります</h2>
-      <p>第7課完整 88 個單字：房子、家具家電、形容詞、住宅、周邊與家電按鍵。</p>
+      <p>家と職場｜88 個單字・13 個句子</p>
       <div class="progress"><div class="track"><div id="bar" class="bar"></div></div><div id="ptext" class="count"></div></div>
     </div>
 
@@ -40,14 +40,14 @@
       <span id="installStatus">如果瀏覽器支援直接安裝，按上方「📲 加到桌面」會跳出安裝視窗。</span>
     </div>
 
-    <div class="sectionTitle"><h3>今天想怎麼學？</h3><span>挑一個就開始</span></div>
+    <div class="sectionTitle"><h3>今天想怎麼學？</h3><span>先選上面的課次</span></div>
     <div class="grid">
-      <button class="mode" data-open="words" type="button"><span class="mi">🧸</span><strong>單字</strong><small>88 個完整單字＋對應圖示＋發音</small></button>
-      <button class="mode" data-open="sentences" type="button"><span class="mi">💬</span><strong>句子</strong><small>完整句型＋發音</small></button>
-      <button class="mode" data-open="quiz" type="button"><span class="mi">🎯</span><strong>小測驗</strong><small>隨機 10 題複習</small></button>
-      <button class="mode" data-open="learned" type="button"><span class="mi">🌱</span><strong>已學會</strong><small>查看你的進度</small></button>
+      <button class="mode" data-open="words" type="button"><span class="mi">🧸</span><strong>單字</strong><small>完整單字＋圖示＋發音</small></button>
+      <button class="mode" data-open="sentences" type="button"><span class="mi">💬</span><strong>句子</strong><small>重點句子＋發音</small></button>
+      <button class="mode" data-open="quiz" type="button"><span class="mi">🎯</span><strong>小測驗</strong><small>目前課次隨機 10 題</small></button>
+      <button class="mode" data-open="learned" type="button"><span class="mi">🌱</span><strong>已學會</strong><small>查看目前課次進度</small></button>
     </div>
-    <div class="daily"><div class="dicon">🌸</div><div><strong>現在可以看圖＋聽聲音一起記</strong><small>直接點單字圖示就能播放發音。</small></div></div>
+    <div class="daily"><div class="dicon">🌸</div><div><strong>第1～7課都放在同一個 APP</strong><small>切換課次後，單字、句子和測驗會一起切換。</small></div></div>
   </section>
 
   <section id="study" class="screen">
@@ -71,7 +71,13 @@
   <button type="button" data-nav="words"><b>あ</b>單字</button>
   <button type="button" data-nav="quiz"><b>✓</b>測驗</button>
 </nav>
-<script src="data.js?v=9"></script>
-<script src="app.js?v=9"></script>
+<script src="data.js?v=10"></script>
+<script src="lesson01.js?v=10"></script>
+<script src="lesson02.js?v=10"></script>
+<script src="lesson03.js?v=10"></script>
+<script src="lesson04.js?v=10"></script>
+<script src="lesson05.js?v=10"></script>
+<script src="lesson06.js?v=10"></script>
+<script src="app-v10.js?v=10"></script>
 </body>
 </html>
