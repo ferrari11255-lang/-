@@ -3,10 +3,10 @@ window.LESSONS=window.LESSONS||{};
 if(window.LESSON7){
   window.LESSONS[7]={title:'部屋が4つあります',topic:'家と職場',words:window.LESSON7.words||[],sentences:window.LESSON7.sentences||[]};
 }
-const LESSON_ICONS={1:'🌅',2:'💬',3:'🤝',4:'👨‍👩‍👧',5:'🍜',6:'🍔',7:'🏠'};
+const LESSON_ICONS={1:'🌅',2:'💬',3:'🤝',4:'👨‍👩‍👧',5:'🍜',6:'🍔',7:'🏠',8:'🏢'};
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-let currentLesson=Number(localStorage.getItem('irodoriCurrentLessonV10')||7);
-if(!window.LESSONS[currentLesson])currentLesson=7;
+let currentLesson=Number(localStorage.getItem('irodoriCurrentLessonV11')||8);
+if(!window.LESSONS[currentLesson])currentLesson=8;
 let mode='words',group='全部',deferredPrompt=null,quiz=[],qi=0,score=0,answered=false;
 
 const learned=new Set(JSON.parse(localStorage.getItem('irodoriLearnedV10')||'[]'));
@@ -55,7 +55,7 @@ function renderLessonTabs(){
     $('.top').insertAdjacentElement('afterend',box);
   }
   box.innerHTML='';
-  for(let n=1;n<=7;n++){
+  for(let n=1;n<=8;n++){
     const l=window.LESSONS[n];if(!l)continue;
     const b=document.createElement('button');b.type='button';b.className='lesson-tab'+(n===currentLesson?' active':'');
     b.innerHTML='<span class="lesson-tab-icon">'+(LESSON_ICONS[n]||'📘')+'</span><span>第'+n+'課</span>';
@@ -80,7 +80,7 @@ function updateHome(){
 }
 function switchLesson(n){
   if(!window.LESSONS[n])return;
-  currentLesson=n;localStorage.setItem('irodoriCurrentLessonV10',String(n));
+  currentLesson=n;localStorage.setItem('irodoriCurrentLessonV11',String(n));
   mode='words';group='全部';$('#search').value='';
   if('speechSynthesis'in window)window.speechSynthesis.cancel();
   updateHome();show('#home');setNav('home');
@@ -168,8 +168,8 @@ $('#installBtn').addEventListener('click',async()=>{
   if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null}else{$('#installHelp').classList.toggle('show')}
 });
 if('serviceWorker'in navigator){
-  navigator.serviceWorker.register('./sw.js?v=10').then(r=>r.update()).catch(()=>{});
-  if('caches'in window)caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('irodori-')&&k!=='irodori-v10').map(k=>caches.delete(k))));
+  navigator.serviceWorker.register('./sw.js?v=11').then(r=>r.update()).catch(()=>{});
+  if('caches'in window)caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('irodori-')&&k!=='irodori-v11').map(k=>caches.delete(k))));
 }
 updateHome();
 })();
